@@ -6,8 +6,12 @@ describe('match', function() {
     expect(match('some text', 'te')).to.deep.equal([[5, 7]]);
   });
 
-  it('should not highlight at the middle of a word', function() {
+  it('should not highlight at the middle of a word if anyMatch flag is set to false', function() {
     expect(match('some text', 'e')).to.deep.equal([]);
+  });
+
+  it('should highlight at the middle of a word if passed third parameter as true', function() {
+    expect(match('some text', 'o', true)).to.deep.equal([[1, 2]]);
   });
 
   it('should highlight only the first match by default', function() {
